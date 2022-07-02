@@ -43,6 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--//stylesheets-->
 
 	<link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -493,7 +494,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<h3 class="title">Contact</h3>
 						<div class="contact-us">
-				<form action="#" method="post">
+				<form id="submit-form" action="">
 					<div class="col-md-6 col-sm-6 col-xs-6 styled-input">
 						<input type="text" name="Name" placeholder="Name" required="">
 					</div>
@@ -646,6 +647,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //here ends scrolling icon -->
+	
+	<script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbwylHX8uAFpPXFDizM3KPpOeF2aiFQB6nJlhDfwZKksrvmKgl1wOQZWD2-NCCnaZF1UhQ/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
